@@ -1,0 +1,39 @@
+{
+  "name": "Wealth Masters Club",
+  "short_name": "Wealth Masters",
+  "description": "Unlock financial freedom with the Wealth Masters Club through property investments and specialized trusts.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1F2937",
+  "background_color": "#111827",
+  "icons": [
+    {
+      "src": "/assets/icon-192x192.png",
+      "sizes": "192x99",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512x512.png",
+      "sizes": "512x263",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-maskable-192x192.png",
+      "sizes": "192x99",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icon-maskable-512x512.png",
+      "sizes": "512x263",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait",
+  "scope": "/"
+}
