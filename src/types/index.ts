@@ -123,7 +123,7 @@ export interface ModalProps {
 export interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'back';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   loading?: boolean;

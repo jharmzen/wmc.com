@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
   const hoverClasses = hover ? 'hover:shadow-xl transition-shadow duration-200' : '';
 
   return (
-    <div className={`bg-white rounded-lg border border-gray-200 ${shadowClasses[shadow]} ${hoverClasses} ${className}`}>
+    <div className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 ${shadowClasses[shadow]} ${hoverClasses} ${className}`}>
       {children}
     </div>
   );
@@ -35,7 +35,7 @@ interface CardHeaderProps {
 }
 
 export const CardHeader: React.FC<CardHeaderProps> = ({ children, className = '' }) => (
-  <div className={`px-6 py-4 border-b border-gray-200 ${className}`}>
+  <div className={`px-8 py-4 border-b border-gray-200 ${className}`}>
     {children}
   </div>
 );
@@ -46,7 +46,7 @@ interface CardContentProps {
 }
 
 export const CardContent: React.FC<CardContentProps> = ({ children, className = '' }) => (
-  <div className={`px-6 py-4 ${className}`}>
+  <div className={`px-8 py-4 ${className}`}>
     {children}
   </div>
 );
@@ -57,7 +57,7 @@ interface CardFooterProps {
 }
 
 export const CardFooter: React.FC<CardFooterProps> = ({ children, className = '' }) => (
-  <div className={`px-6 py-4 border-t border-gray-200 bg-gray-50 ${className}`}>
+  <div className={`px-8 py-4 border-t border-gray-200 bg-gray-50 ${className}`}>
     {children}
   </div>
 );

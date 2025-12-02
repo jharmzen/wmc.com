@@ -12,7 +12,7 @@ const Input: React.FC<InputProps> = ({
   disabled = false,
   className = '',
 }) => {
-  const baseClasses = 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200';
+  const baseClasses = 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad7d13] focus:border-transparent transition-colors duration-200';
   const errorClasses = error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300';
   const disabledClasses = disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white';
 

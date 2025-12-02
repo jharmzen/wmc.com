@@ -14,11 +14,12 @@ const Button: React.FC<ButtonProps> = ({
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantClasses = {
-    primary: 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500 shadow-lg hover:shadow-xl transform hover:scale-105',
-    secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500 shadow-lg hover:shadow-xl transform hover:scale-105',
-    accent: 'bg-accent-600 hover:bg-accent-700 text-white focus:ring-accent-500 shadow-lg hover:shadow-xl transform hover:scale-105',
-    outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white focus:ring-primary-500',
-    ghost: 'text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
+    primary: 'bg-[#ad7d13] hover:bg-[#8d6610] text-white focus:ring-[#ad7d13] shadow-lg hover:shadow-xl transform hover:scale-105',
+    secondary: 'bg-[#0d203b] hover:bg-[#4782b5] text-white focus:ring-[#0d203b] shadow-lg hover:shadow-xl transform hover:scale-105',
+    accent: 'bg-[#4782b5] hover:bg-[#0d203b] text-white focus:ring-[#4782b5] shadow-lg hover:shadow-xl transform hover:scale-105',
+    outline: 'border-2 border-[#ad7d13] text-[#ad7d13] hover:bg-[#ad7d13] hover:text-white focus:ring-[#ad7d13]',
+    ghost: 'text-[#ad7d13] hover:bg-[#ad7d13] hover:bg-opacity-10 focus:ring-[#ad7d13]',
+    back: 'bg-[#f9f9f9] hover:bg-[#e0e0e0] text-black focus:ring-[#ad7d13] shadow-lg hover:shadow-xl transform hover:scale-105',
   };
 
   const sizeClasses = {
