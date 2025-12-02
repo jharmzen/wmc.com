@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ logo, navItems, ctaButton }) => {
 
   return (
     <header id="global-header" className="code-section bg-[#0d203b] shadow-md sticky top-0 z-50">
-      <div className="px-4">
+      <div className="px-4 md:px-8 lg:px-16">
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
@@ -49,15 +49,16 @@ const Header: React.FC<HeaderProps> = ({ logo, navItems, ctaButton }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-white p-3 rounded-md hover:bg-[#4782b5] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#ad7d13] focus:ring-offset-2 focus:ring-offset-[#0d203b]"
+            aria-label="Toggle mobile menu"
           >
-            <i className="fas fa-bars text-2xl" aria-hidden="true"></i>
+            <i className="fas fa-bars text-xl sm:text-2xl" aria-hidden="true"></i>
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="lg:hidden pb-4">
+          <nav className="lg:hidden pb-4 px-4 bg-[#0d203b]">
             <div className="flex flex-col space-y-4">
               {navItems.map((item, index) => (
                 <Link
