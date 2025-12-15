@@ -1,6 +1,7 @@
 export { default as Button } from './Button';
 export { default as Input } from './Input';
 export { default as Modal } from './Modal';
+export { default as LoginModal } from './LoginModal';
 export { default as Alert } from './Alert';
 export { default as Loader } from './Loader';
 export { default as Card, CardHeader, CardContent, CardFooter } from './Card';
@@ -13,8 +14,10 @@ export { default as CredentialCard } from './CredentialCard';
 export { default as FloatingStatCard } from './FloatingStatCard';
 export { default as CTASection } from './CTASection';
 export { default as Header } from './Header';
+export { default as WMCHeader } from './WMCHeader';
 export { default as TestimonialCard } from './TestimonialCard';
 export { default as TrustCard } from './TrustCard';
 export { default as Footer } from './Footer';
+export { default as WMCFooter } from './WMCFooter';
 export { default as UnderConstruction } from './UnderConstruction';
 export { default as BackButton } from './BackButton';

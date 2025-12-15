@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import LoginModal from './LoginModal';
 
 interface NavItem {
   label: string;
@@ -17,6 +19,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ logo, navItems, ctaButton }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <header id="global-header" className="code-section bg-[#0d203b] shadow-md sticky top-0 z-50">
@@ -38,6 +42,29 @@ const Header: React.FC<HeaderProps> = ({ logo, navItems, ctaButton }) => {
                 {item.label}
               </Link>
             ))}
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="text-white hover:text-[#ad7d13] font-medium transition-colors duration-200"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={logout}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-all duration-200"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => setIsLoginModalOpen(true)}
+                className="bg-[#4782b5] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#3a6b8c] transition-all duration-200"
+              >
+                Login
+              </button>
+            )}
             <Link
               to={ctaButton.href}
               className="bg-[#ad7d13] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#8d6610] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
@@ -69,6 +96,29 @@ const Header: React.FC<HeaderProps> = ({ logo, navItems, ctaButton }) => {
                   {item.label}
                 </Link>
               ))}
+              {isAuthenticated ? (
+                <>
+                  <Link
+                    to="/dashboard"
+                    className="text-white hover:text-[#ad7d13] font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]"
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={logout}
+                    className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-all duration-200 text-center"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setIsLoginModalOpen(true)}
+                  className="bg-[#4782b5] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#3a6b8c] transition-all duration-200 text-center"
+                >
+                  Login
+                </button>
+              )}
               <Link
                 to={ctaButton.href}
                 className="bg-[#ad7d13] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#8d6610] transition-all duration-200 text-center"
@@ -79,6 +129,12 @@ const Header: React.FC<HeaderProps> = ({ logo, navItems, ctaButton }) => {
           </nav>
         )}
       </div>
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </header>
   );
 };

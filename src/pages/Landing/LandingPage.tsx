@@ -2,8 +2,8 @@
 
 import { Link } from 'react-router-dom';
 import {
-  Header,
-  Footer,
+  WMCHeader,
+  WMCFooter,
   SectionHeader,
   StatCard,
   ProcessStep,
@@ -20,16 +20,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Header
-        logo="/assets/img/logo-white.png"
-        navItems={[
-          { label: 'About Us', href: './about-us' },
-          { label: 'How It Works', href: './how-it-works' },
-          { label: 'Membership', href: './membership' },
-          { label: 'Events', href: './events' },
-        ]}
-        ctaButton={{ text: 'Claim Your Free Wealth Guide', href: './membership' }}
-      />
+      <WMCHeader />
 
       {/* Hero Section */}
       <section className="code-section relative bg-gradient-to-br from-[#0d203b] to-[#4782b5] text-white overflow-hidden" id="s02h9l4">
@@ -627,39 +618,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <Footer
-        logo="/assets/img/logo-white.png"
-        quickLinks={[
-          { label: 'Home', href: './' },
-          { label: 'About Us', href: './about-us' },
-          { label: 'How It Works', href: './how-it-works' },
-          { label: 'Membership', href: './membership' },
-          { label: 'Events', href: './events' },
-          { label: 'Testimonials', href: './testimonials' },
-        ]}
-        resources={[
-          { label: 'Shop', href: './shop' },
-          { label: 'Blog/Insights', href: './blog' },
-          { label: 'Contact Us', href: './contact-us' },
-          { label: 'Member Login', href: './login' },
-        ]}
-        contactInfo={{
-          phone: '+27 21 851 2730',
-          email: 'info@wealthmastersclub.com',
-          address: ['Posbus 834, Somerset Mall', 'Somerset West, 7137', 'South Africa'],
-        }}
-        socialLinks={[
-          { icon: 'fa-facebook-f', href: '#' },
-          { icon: 'fa-linkedin-in', href: '#' },
-          { icon: 'fa-youtube', href: '#' },
-          { icon: 'fa-instagram', href: '#' },
-        ]}
-        credentials={[
-          'Part of Destinata Group of Companies - Legal, Financial & Property Service Provider',
-          'Authorised FSP: 48729 | Fiduciary Institute of South Africa | Accounting Association of South Africa | Property Practitioners Regulatory Authority',
-        ]}
-        copyright="© 2025 Wealth Masters Club. All rights reserved."
-      />
+      <WMCFooter />
     </div>
   );
 }
