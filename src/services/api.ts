@@ -614,6 +614,12 @@ export const getDashboardStats = async (memberData?: MemberData): Promise<Dashbo
 export const getUpcomingEvents = async (memberData?: MemberData): Promise<Event[]> => {
   if (memberData && memberData.Events && memberData.Events.length > 0) {
     return memberData.Events.map((event) => ({
+      SeminarName: event.SeminarName,
+      EventDate: event.EventDate,
+      StartTime: event.StartTime,
+      Venue: event.Venue,
+      SocialImage: event.SocialImage,
+      // Keep legacy fields for backward compatibility
       title: event.SeminarName,
       date: formatDate(event.EventDate),
       time: formatTime(event.StartTime),

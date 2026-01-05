@@ -276,11 +276,17 @@ export interface DashboardStats {
 }
 
 export interface Event {
-  title: string;
-  date: string;
-  time: string;
-  event_image: string;
-  social_image: string;
+  SeminarName: string;
+  EventDate: string;
+  StartTime: string;
+  Venue: string;
+  SocialImage: string;
+  // Legacy fields for compatibility
+  title?: string;
+  date?: string;
+  time?: string;
+  event_image?: string;
+  social_image?: string;
 }
 
 export interface ContactRequest {
@@ -314,11 +320,16 @@ export interface Assignee {
 }
 
 export interface Article {
+  ArticleId: number;
   Title: string;
-  OgImage: string;
+  Body: string;
+  Author: string;
+  CreateDate: string;
+  OgImage?: string;
+  ShortExcerpt?: string;
+  LongExcerpt?: string;
   Content?: string;
   Description?: string;
-  // Add other article properties as needed
 }
 
 export interface WebinarData {
@@ -386,11 +397,14 @@ export interface WebinarStreamingData {
 }
 
 export interface QuestionnaireFormData {
-  [key: string]: unknown; // Placeholder for questionnaire fields
+  [key: string]: string | undefined;
 }
 
 export interface AffordabilityFormData {
-  [key: string]: unknown; // Placeholder for affordability fields
+  nett_income?: string;
+  nett_worth?: string;
+  available_cash?: string;
+  [key: string]: string | undefined;
 }
 
 export interface ProfileFormData {
