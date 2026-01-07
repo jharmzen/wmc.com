@@ -174,9 +174,11 @@ export async function getLatestArticle(siteKey: string, memberCode: string): Pro
     }
 
     const article = response.Msg as Article;
-    article.OgImage = article.OgImage.startsWith('../')
-      ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
-      : article.OgImage;
+    if (article.OgImage) {
+      article.OgImage = article.OgImage.startsWith('../')
+        ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
+        : article.OgImage;
+    }
     return article;
   } catch (error) {
     console.error('Error fetching latest article:', error);
@@ -199,9 +201,11 @@ export async function getArticleById(articleId: string, siteKey: string, memberC
     }
 
     const article = response.Msg as Article;
-    article.OgImage = article.OgImage.startsWith('../')
-      ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
-      : article.OgImage;
+    if (article.OgImage) {
+      article.OgImage = article.OgImage.startsWith('../')
+        ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
+        : article.OgImage;
+    }
     return article;
   } catch (error) {
     console.error(`Error fetching article with id ${articleId}:`, error);
@@ -224,9 +228,11 @@ export async function getArticleByTitle(title: string, siteKey: string, memberCo
     }
 
     const article = response.Msg as Article;
-    article.OgImage = article.OgImage.startsWith('../')
-      ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
-      : article.OgImage;
+    if (article.OgImage) {
+      article.OgImage = article.OgImage.startsWith('../')
+        ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
+        : article.OgImage;
+    }
     return article;
   } catch (error) {
     console.error(`Error fetching article with title ${title}:`, error);
@@ -250,7 +256,7 @@ export async function getLatestTenArticles(siteKey: string, memberCode: string):
     const articles = Array.isArray(response.Msg) ? response.Msg : [response.Msg];
     return articles.map((article: Article) => ({
       ...article,
-      OgImage: article.OgImage.startsWith('../')
+      OgImage: article.OgImage && article.OgImage.startsWith('../')
         ? `${import.meta.env.VITE_API_ROOT_DOMAIN}/${article.OgImage.replace(/^\.\.\//g, '')}`
         : article.OgImage,
     }));

@@ -410,3 +410,43 @@ export interface AffordabilityFormData {
 export interface ProfileFormData {
   [key: string]: unknown; // Placeholder for profile fields
 }
+
+// Online Course Types
+export interface CourseModule {
+  ModuleId: number;
+  Caption: string;
+  Intro: string;
+  TestPassed: boolean;
+}
+
+export interface CourseDetails {
+  Caption: string;
+  OnlineCourseModuleId: number;
+  data: Array<{
+    FileName: string;
+    Url: string;
+  }>;
+}
+
+export interface TestQuestion {
+  Id: number;
+  Number: number;
+  Question: string;
+  PossibleAnswers: string[];
+  LatestTestAnswer: number | string;
+  AnswerPassed: number | string;
+}
+
+export interface CourseConfig {
+  id: number;
+  title: string;
+  description: string;
+  restricted: boolean;
+}
+
+export interface SurveyQuestion {
+  Question: string;
+  TypeCode: 'SURV-MC' | 'SURV-SUGG';
+  TypeDescription: string;
+  Options?: Record<string, string>;
+}

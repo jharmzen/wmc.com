@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { WMCHeader, WMCFooter } from '../../components';
 import { BookOpen, Video, Download, Info, X } from 'lucide-react';
@@ -16,6 +17,7 @@ interface Course {
 }
 
 const Education: React.FC = () => {
+  const navigate = useNavigate();
   const { state } = useAuth();
   const memberData = state.memberData;
   const MemberStatusCode = memberData?.MemberStatusCode || '';
@@ -120,10 +122,8 @@ const Education: React.FC = () => {
     setShowModal(true);
   };
 
-  const handleCourseClick = (link: string): void => {
-    if (link !== '#') {
-      window.open(link, '_blank');
-    }
+  const handleCourseClick = (): void => {
+    navigate('/online-courses');
   };
 
   return (
@@ -174,7 +174,7 @@ const Education: React.FC = () => {
                       </div>
                     </div>
                     <button
-                      onClick={() => handleCourseClick(course.booking_link)}
+                      onClick={() => handleCourseClick()}
                       className={`w-full px-4 py-2 text-white rounded-lg transition ${
                         course.booking_link === '#' ? 'bg-orange-500 hover:bg-orange-600' : 'bg-blue-600 hover:bg-blue-700'
                       }`}

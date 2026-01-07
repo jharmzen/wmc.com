@@ -3,7 +3,6 @@ import { Lock, User, CheckCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Loader, WMCHeader, WMCFooter } from '../../components';
 import { updateProfileSettingsData, updatePasswordData } from '../../services/api';
-import type { ProfileFormData } from '../../types';
 
 const Settings: React.FC = () => {
   const { state, setMemberData } = useAuth();
@@ -15,7 +14,7 @@ const Settings: React.FC = () => {
   const memberPhone = memberData?.Phone || '';
   const memberSurname = memberData?.Surname || '';
 
-  const [formData, setFormData] = useState<ProfileFormData>({
+  const [formData, setFormData] = useState({
     firstName: memberFirstNames,
     lastName: memberSurname,
     email: memberEmail,
@@ -62,7 +61,7 @@ const Settings: React.FC = () => {
         ...memberData!,
         FirstNames: formData.firstName,
         Surname: formData.lastName,
-        Phone: formData.phone
+        Phone: formData.phone || ''
       });
 
       setSuccess('Profile settings updated successfully!');

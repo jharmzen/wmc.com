@@ -4,24 +4,12 @@ import { ShareIcon, Users, TrendingUp, Calendar } from 'lucide-react';
 import { getDashboardStats, getUpcomingEvents } from '../../services/api';
 import { useAuth } from '../../contexts/AuthContext';
 import { WMCHeader, WMCFooter } from '../../components';
-import type { Event } from '../../types';
 
 const Dashboard: React.FC = () => {
   const { state } = useAuth();
   const navigate = useNavigate();
   const memberStatusCode = state.memberData?.MemberStatusCode || '';
 
-  // These are used in the useEffect but TypeScript doesn't detect it
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [stats, setStats] = useState({
-    totalCommission: '0',
-    clubUnits: '0',
-    ClubUnitGrowth: '0',
-    eventsThisMonth: 0
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [events, setEvents] = useState<Event[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -35,33 +23,12 @@ const Dashboard: React.FC = () => {
       try {
         // Use member data if available
         if (state.memberData) {
-          const statsData = await getDashboardStats(state.memberData);
-          const eventsData = await getUpcomingEvents(state.memberData);
-
-          if (isMounted) {
-            setStats({
-              totalCommission: statsData.totalCommission,
-              clubUnits: statsData.clubUnits,
-              ClubUnitGrowth: statsData.growthRate,
-              eventsThisMonth: statsData.eventsThisMonth
-            });
-
-            setEvents(eventsData);
-          }
+          await getDashboardStats(state.memberData);
+          await getUpcomingEvents(state.memberData);
         } else {
           // Fallback to regular API calls
-          const statsData = await getDashboardStats();
-          const eventsData = await getUpcomingEvents();
-          if (isMounted) {
-            setStats({
-              totalCommission: statsData.totalCommission,
-              clubUnits: statsData.clubUnits,
-              ClubUnitGrowth: statsData.growthRate,
-              eventsThisMonth: statsData.eventsThisMonth
-            });
-
-            setEvents(eventsData);
-          }
+          await getDashboardStats();
+          await getUpcomingEvents();
         }
       } catch (err) {
         if (isMounted) {

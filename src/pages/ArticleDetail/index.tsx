@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 import DOMPurify from 'dompurify';
-import { getArticleById, getArticleByTitle } from '../../services/api';
+import { getArticleByTitle } from '../../services/api';
 import { WMCHeader, WMCFooter, Loader } from '../../components';
-import { generateArticleSlug } from '../../lib/utils';
 import type { Article } from '../../types';
 
 const ArticleDetail: React.FC = () => {
@@ -27,7 +26,9 @@ const ArticleDetail: React.FC = () => {
 
         // Try to fetch by slug (convert slug back to potential title)
         const titleFromSlug = slug.replace(/-/g, ' ');
-        const articleData = await getArticleByTitle(titleFromSlug);
+        const siteKey = import.meta.env.VITE_SITE_KEY || '';
+        const memberCode = '';
+        const articleData = await getArticleByTitle(titleFromSlug, siteKey, memberCode);
 
         if (articleData) {
           setArticle(articleData);
