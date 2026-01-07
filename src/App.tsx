@@ -26,6 +26,7 @@ import AutoLogin from './pages/AutoLogin';
 import PaymentFeedback from './pages/PaymentFeedback';
 import Unsubscribe from './pages/Unsubscribe';
 import WebinarView from './pages/WebinarView';
+import WebinarDetail from './pages/WebinarDetail';
 import ServiceRating from './pages/ServiceRating';
 import ServiceReassign from './pages/ServiceReassign';
 
@@ -59,8 +60,9 @@ function App() {
             <Route path="/action/unsubscribe/:memberCode" element={<Unsubscribe />} />
             <Route path="/action/unsubscribe/:memberCode/:section" element={<Unsubscribe />} />
 
-            {/* Webinar view route */}
+            {/* Webinar routes */}
             <Route path="/webinar/view/:eventId" element={<WebinarView />} />
+            <Route path="/webinar/:eventId" element={<WebinarDetail />} />
 
             {/* Service rating route */}
             <Route path="/services/rating/:data" element={<ServiceRating />} />

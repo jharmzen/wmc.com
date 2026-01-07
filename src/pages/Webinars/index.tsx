@@ -1,13 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { WMCHeader, WMCFooter } from '../../components';
 import { useWebinars } from '../../hooks/useWebinars';
 import type { WebinarData } from '../../hooks/useWebinars';
 
 const Webinars: React.FC = () => {
+  const navigate = useNavigate();
   const { webinars, loading, error } = useWebinars();
 
   const handleWebinarClick = (webinar: WebinarData) => {
-    if (webinar.BookingLink) {
+    // Navigate to webinar detail page for booking
+    if (webinar.EventId) {
+      navigate(`/webinar/${webinar.EventId}`);
+    } else if (webinar.BookingLink) {
+      // Fallback to external link if no EventId
       window.open(webinar.BookingLink, '_blank');
     }
   };
@@ -40,7 +46,7 @@ const Webinars: React.FC = () => {
               <div className="grid gap-6">
                 {webinars.map((webinar) => (
                   <div
-                    key={webinar.EventId}
+                    key={webinar.EventId || webinar.Title}
                     className="border rounded-lg overflow-hidden hover:shadow-lg transition cursor-pointer"
                     onClick={() => handleWebinarClick(webinar)}
                   >
@@ -59,17 +65,15 @@ const Webinars: React.FC = () => {
                           dangerouslySetInnerHTML={{ __html: webinar.Description }}
                         />
                       )}
-                      {webinar.BookingLink && (
-                        <button
-                          className="mt-4 px-4 py-2 bg-[#4782b5] text-white rounded-lg hover:bg-[#3a6b8c] transition font-medium"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleWebinarClick(webinar);
-                          }}
-                        >
-                          View Details
-                        </button>
-                      )}
+                      <button
+                        className="mt-4 px-4 py-2 bg-[#4782b5] text-white rounded-lg hover:bg-[#3a6b8c] transition font-medium"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleWebinarClick(webinar);
+                        }}
+                      >
+                        View Details
+                      </button>
                     </div>
                   </div>
                 ))}
