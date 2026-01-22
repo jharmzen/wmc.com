@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { WMCHeader, WMCFooter } from '../../components';
 import parse from 'html-react-parser';
-import { X } from 'lucide-react';
+import { X, ArrowLeft } from 'lucide-react';
 import { getCourseModules, getCourseDetails, emailChapter, getCourseTest, submitCourseTest } from '../../services/api';
 
 const allowedCodes = ['MS-D', 'MS-EXEC', 'MS-PREM', 'MS-PE', 'MS-P', 'MS-PG', 'MS-PS'];
@@ -264,25 +264,27 @@ const OnlineCourses: React.FC = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {courses.map(course => (
-                <div
-                  key={course.id}
-                  className={`p-6 rounded-lg border-2 ${
-                    course.restricted && !hasAccess
-                      ? 'opacity-50 cursor-not-allowed'
-                      : 'cursor-pointer hover:border-blue-500'
-                  } ${selectedCourse === course.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}
-                  onClick={() => handleCourseSelect(course.id)}
-                >
-                  <h3 className="font-semibold mb-2 text-[#0d203b]">{course.title}</h3>
-                  <p className="text-sm text-gray-600">{course.description}</p>
-                  {course.restricted && !hasAccess && (
-                    <p className="text-xs text-red-500 mt-2">Requires premium membership</p>
-                  )}
-                </div>
-              ))}
-            </div>
+            {(selectedCourse === 6 && !showChapters) && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {courses.map(course => (
+                  <div
+                    key={course.id}
+                    className={`p-6 rounded-lg border-2 ${
+                      course.restricted && !hasAccess
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'cursor-pointer hover:border-blue-500'
+                    } ${selectedCourse === course.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}
+                    onClick={() => handleCourseSelect(course.id)}
+                  >
+                    <h3 className="font-semibold mb-2 text-[#0d203b]">{course.title}</h3>
+                    <p className="text-sm text-gray-600">{course.description}</p>
+                    {course.restricted && !hasAccess && (
+                      <p className="text-xs text-red-500 mt-2">Requires premium membership</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
 
             {isLoading ? (
               <div className="flex justify-center items-center h-40">
@@ -371,7 +373,17 @@ const OnlineCourses: React.FC = () => {
                   </div>
                 ) : selectedCourse === 6 && showChapters ? (
                   <div className="space-y-6">
-                    <div className="space-y-4 mt-8">
+                    <button
+                      onClick={() => setShowChapters(false)}
+                      className="flex items-center text-blue-600 hover:text-blue-800 transition mb-4"
+                    >
+                      <ArrowLeft className="h-5 w-5 mr-2" />
+                      Back to Courses
+                    </button>
+                    <h2 className="text-2xl font-bold text-[#0d203b]">
+                      {courses.find(c => c.id === selectedCourse)?.title}
+                    </h2>
+                    <div className="space-y-4">
                       {courseModules.map((module) => (
                         <div key={module.ModuleId} className="border rounded-lg p-4 hover:bg-gray-50 transition">
                           <div className="flex items-center justify-between">
@@ -406,7 +418,22 @@ const OnlineCourses: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-4 mt-8">
+                  <div className="space-y-6">
+                    <button
+                      onClick={() => {
+                        setSelectedCourse(6);
+                        setShowChapters(false);
+                        setCourseModules([]);
+                      }}
+                      className="flex items-center text-blue-600 hover:text-blue-800 transition mb-4"
+                    >
+                      <ArrowLeft className="h-5 w-5 mr-2" />
+                      Back to Courses
+                    </button>
+                    <h2 className="text-2xl font-bold text-[#0d203b]">
+                      {courses.find(c => c.id === selectedCourse)?.title}
+                    </h2>
+                    <div className="space-y-4">
                     {courseModules.map((module) => (
                       <div key={module.ModuleId} className="border rounded-lg p-4 hover:bg-gray-50 transition">
                         <div className="flex items-center justify-between">
@@ -438,6 +465,7 @@ const OnlineCourses: React.FC = () => {
                         </div>
                       </div>
                     ))}
+                    </div>
                   </div>
                 )}
               </>

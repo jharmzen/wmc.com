@@ -13,6 +13,7 @@ interface WebinarData {
   Content: string;
   Description: string;
   BookingLink?: string;
+  LanguageCode?: string;
 }
 
 const WebinarDetail: React.FC = () => {
@@ -63,11 +64,11 @@ const WebinarDetail: React.FC = () => {
   }, [eventId, memberCode]);
 
   const handleBookNowClick = () => {
-    if (webinar?.BookingLink) {
-      window.open(webinar.BookingLink, '_blank', 'noopener,noreferrer');
-    } else {
+    // if (webinar?.BookingLink) {
+    //   window.open(webinar.BookingLink, '_blank', 'noopener,noreferrer');
+    // } else {
       setShowBookingModal(true);
-    }
+    // }
   };
 
   const handleBookingSuccess = () => {
@@ -177,6 +178,7 @@ const WebinarDetail: React.FC = () => {
             </div>
             <WebinarBooking
               eventId={eventId!}
+              languageCode={webinar.LanguageCode}
               onSuccess={handleBookingSuccess}
               onCancel={() => setShowBookingModal(false)}
             />

@@ -117,8 +117,10 @@ const AffordabilityCalculator: React.FC = () => {
       setAffordabilityData(updatedData);
 
       setSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setError('Failed to submit questionnaire. Please try again.');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } finally {
       setIsSubmitting(false);
     }

@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { bookWebinar } from '../../services/api';
+import { redirectToPayGate } from '../../utils/payment';
+
+interface PaymentParameters {
+  UniqueTransactionDescription: string;
+  TransactionAmount: number;
+  CardholderName: string;
+  CardholderEmail: string;
+  m_1: number;
+  m_2: number;
+}
+
+interface BookingResponseMsg {
+  Streaming?: boolean;
+  EmbeddedCode?: string | null;
+  EnrolmentId?: number;
+  BookingFeedback?: string[];
+  BookingFeedback_Afr?: string[];
+  PaymentParameters?: PaymentParameters;
+}
 
 interface WebinarBookingProps {
   eventId: string;
+  languageCode?: string; // 'LANG-E' for English, 'LANG-A' for Afrikaans
   onSuccess?: (data: { Streaming: boolean; EmbeddedCode: string | null; EnrolmentId: number }) => void;
   onCancel?: () => void;
 }
 
-const WebinarBooking: React.FC<WebinarBookingProps> = ({ eventId, onSuccess, onCancel }) => {
+const WebinarBooking: React.FC<WebinarBookingProps> = ({ eventId, languageCode = 'LANG-E', onSuccess, onCancel }) => {
   const { state } = useAuth();
+  const isAfrikaans = languageCode === 'LANG-A';
   const memberData = state.memberData;
   const memberCode = memberData?.MemberCode || '';
   const siteKey = import.meta.env.VITE_SITE_KEY;
@@ -21,6 +42,7 @@ const WebinarBooking: React.FC<WebinarBookingProps> = ({ eventId, onSuccess, onC
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [pendingRegistration, setPendingRegistration] = useState<{
     Streaming: boolean;
     EmbeddedCode: string | null;
@@ -36,14 +58,39 @@ const WebinarBooking: React.FC<WebinarBookingProps> = ({ eventId, onSuccess, onC
     try {
       const data = await bookWebinar(eventId, firstName, surname, email, mobile, memberCode, siteKey);
       if (data.Success) {
-        let successMessage = 'Successfully booked the webinar!';
+        const msgObj = data.Msg as BookingResponseMsg;
+
+        // Check if payment is required
+        if (msgObj?.PaymentParameters && msgObj.PaymentParameters.TransactionAmount > 0) {
+          setIsLoading(false);
+          setIsProcessingPayment(true);
+
+          // Redirect to PayGate after 2 second delay (matching template behavior)
+          setTimeout(() => {
+            redirectToPayGate(
+              msgObj.PaymentParameters!.UniqueTransactionDescription,
+              msgObj.PaymentParameters!.TransactionAmount,
+              msgObj.PaymentParameters!.CardholderEmail
+            );
+          }, 2000);
+          return;
+        }
+
+        // No payment required - show success
+        const defaultMessage = isAfrikaans
+          ? 'Webinar suksesvol bespreek!'
+          : 'Successfully booked the webinar!';
+        let successMessage = defaultMessage;
 
         if (typeof data.Msg === 'string') {
           successMessage = data.Msg;
         } else if (Array.isArray(data.Msg)) {
           successMessage = data.Msg[0] || successMessage;
         } else if (data.Msg && typeof data.Msg === 'object') {
-          if ('BookingFeedback' in data.Msg && Array.isArray(data.Msg.BookingFeedback)) {
+          // Use Afrikaans feedback if available and language is Afrikaans
+          if (isAfrikaans && 'BookingFeedback_Afr' in data.Msg && Array.isArray(data.Msg.BookingFeedback_Afr)) {
+            successMessage = data.Msg.BookingFeedback_Afr[0] || successMessage;
+          } else if ('BookingFeedback' in data.Msg && Array.isArray(data.Msg.BookingFeedback)) {
             successMessage = data.Msg.BookingFeedback[0] || successMessage;
           } else if ('message' in data.Msg) {
             successMessage = (data.Msg as { message: string }).message || successMessage;
@@ -87,6 +134,19 @@ const WebinarBooking: React.FC<WebinarBookingProps> = ({ eventId, onSuccess, onC
       setPendingRegistration(null);
     }
   };
+
+  // Show payment processing state
+  if (isProcessingPayment) {
+    return (
+      <div className="text-center py-8">
+        <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        </div>
+        <h3 className="text-xl font-semibold text-blue-600 mb-2">Processing Payment</h3>
+        <p className="text-gray-600">Redirecting to secure payment page...</p>
+      </div>
+    );
+  }
 
   if (success) {
     return (

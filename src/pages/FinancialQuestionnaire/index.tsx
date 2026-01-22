@@ -197,8 +197,10 @@ const FinancialQuestionnaire: React.FC = () => {
       }
 
       setSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setError('Failed to submit assessment. Please try again.');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } finally {
       setIsSubmitting(false);
     }
