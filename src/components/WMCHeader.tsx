@@ -36,10 +36,10 @@ const WMCHeader: React.FC = () => {
   return (
     <header id="global-header" className="code-section bg-[#0A1E3D] border-b border-[#1E3A5F] sticky top-0 z-50">
       <div className="px-4 md:px-8 lg:px-16">
-        <div className="flex items-center justify-between h-28">
+        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-28">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src="/assets/header.png" alt="Wealth Masters Club" className="h-28 py-2 w-auto" />
+            <img src="/assets/header.png" alt="Wealth Masters Club" className="h-14 sm:h-18 lg:h-28 py-1 sm:py-2 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
