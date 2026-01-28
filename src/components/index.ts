@@ -17,6 +17,7 @@ export { default as WMCHeader } from './WMCHeader';
 export { default as TestimonialCard } from './TestimonialCard';
 export { default as TrustCard } from './TrustCard';
 export { default as WMCFooter } from './WMCFooter';
+export { default as SubscribeModal } from './SubscribeModal';
 export { default as UnderConstruction } from './UnderConstruction';
 export { default as BackButton } from './BackButton';
 export { FeedbackNotification } from './FeedbackNotification';

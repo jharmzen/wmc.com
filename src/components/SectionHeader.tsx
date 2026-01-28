@@ -46,6 +46,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           title
         )}
       </h2>
+      {centered && (
+        <div className="w-24 h-1 bg-[#DAA520] mx-auto rounded-full mb-4"></div>
+      )}
       {description && (
         <p className="text-xl text-[#6C757D] leading-relaxed">
           {description}
