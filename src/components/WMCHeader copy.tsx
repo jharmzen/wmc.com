@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import LoginModal from './LoginModal';
+import SubscribeModal from './SubscribeModal';
 import { ChevronDown } from 'lucide-react';
 
 const WMCHeader: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false);
   const [isMemberDropdownOpen, setIsMemberDropdownOpen] = useState(false);
   const { isAuthenticated, logout, state } = useAuth();
   const memberData = state.memberData;
@@ -14,11 +16,10 @@ const WMCHeader: React.FC = () => {
 
   // Navigation items for non-logged-in users
   const publicNavItems = [
-    { label: 'About Us', href: '/about-us' },
-    { label: 'How It Works', href: '/how-it-works' },
-    { label: 'Membership', href: '/membership' },
     { label: 'Events', href: '/events' },
-    { label: 'Webinars', href: '/webinars' },
+    { label: 'About', href: '/about-us' },
+    { label: 'Testimonials', href: '/testimonials' },
+    { label: 'FAQ', href: '/faq' },
   ];
 
   // Navigation items for logged-in users
@@ -31,17 +32,14 @@ const WMCHeader: React.FC = () => {
   ];
 
   const navItems = isAuthenticated ? memberNavItems : publicNavItems;
-  const ctaButton = isAuthenticated
-    ? { text: 'My Account', href: '/dashboard' }
-    : { text: 'Claim Your Free Wealth Guide', href: '/membership' };
 
   return (
     <header id="global-header" className="code-section bg-[#0d203b] shadow-md sticky top-0 z-50">
       <div className="px-4 md:px-8 lg:px-16">
-        <div className="flex items-center justify-between h-28">
+        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-28">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src="/assets/header.png" alt="Wealth Masters Club" className="h-28 py-2" />
+            <img src="/assets/header.png" alt="Wealth Masters Club" className="h-14 sm:h-18 lg:h-28 py-1 sm:py-2 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -131,9 +129,9 @@ const WMCHeader: React.FC = () => {
                 Login
               </button>
             )}
-            <Link to={ctaButton.href} className="bg-[#ad7d13] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#8d6610] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
-              {ctaButton.text}
-            </Link>
+            <button onClick={() => setIsSubscribeModalOpen(true)} className="bg-[#ad7d13] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#8d6610] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+              Join the Club Now
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -155,32 +153,32 @@ const WMCHeader: React.FC = () => {
                 <>
                   <div className="pt-2">
                     <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Financial</p>
-                    <Link to="/invoices" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Invoices</Link>
-                    <Link to="/referrals" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Referrals</Link>
-                    <Link to="/club-units" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Club Units</Link>
+                    <Link to="/invoices" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Invoices</Link>
+                    <Link to="/referrals" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Referrals</Link>
+                    <Link to="/club-units" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Club Units</Link>
                   </div>
 
                   <div className="pt-4">
                     <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Education</p>
-                    <Link to="/education" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Online Courses</Link>
+                    <Link to="/education" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Online Courses</Link>
                   </div>
 
                   <div className="pt-4">
                     <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Tools</p>
-                    <Link to="/affordability-calculator" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Affordability Calculator</Link>
-                    <Link to="/financial-questionnaire" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Financial Questionnaire</Link>
-                    <a href="https://www.thelcsystem.com/" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5] flex items-center justify-between">
+                    <Link to="/affordability-calculator" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Affordability Calculator</Link>
+                    <Link to="/financial-questionnaire" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Financial Questionnaire</Link>
+                    <a href="https://www.thelcsystem.com/" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2 flex items-center justify-between">
                       <span>LC System</span>
                       <span className="text-xs text-gray-400">↗</span>
                     </a>
-                    <a href="https://www.treocinvestor.com" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5] flex items-center justify-between">
+                    <a href="https://www.treocinvestor.com" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2 flex items-center justify-between">
                       <span>Investor Software</span>
                       <span className="text-xs text-gray-400">↗</span>
                     </a>
                   </div>
 
                   <div className="pt-4">
-                    <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">Settings</Link>
+                    <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)} className="block text-white hover:text-[#DAA520] text-base transition-colors duration-300 py-2">Settings</Link>
                   </div>
 
                   <button onClick={() => { setIsMobileMenuOpen(false); logout(); }} className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-all duration-200 text-center mt-4">
@@ -192,9 +190,9 @@ const WMCHeader: React.FC = () => {
                   Login
                 </button>
               )}
-              <Link to={ctaButton.href} onClick={() => setIsMobileMenuOpen(false)} className="bg-[#ad7d13] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#8d6610] transition-all duration-200 text-center">
-                {ctaButton.text}
-              </Link>
+              <button onClick={() => { setIsMobileMenuOpen(false); setIsSubscribeModalOpen(true); }} className="bg-[#ad7d13] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#8d6610] transition-all duration-200 text-center">
+                Join the Club Now
+              </button>
             </div>
           </nav>
         )}
@@ -202,6 +200,9 @@ const WMCHeader: React.FC = () => {
 
       {/* Login Modal */}
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
+
+      {/* Subscribe Modal */}
+      <SubscribeModal isOpen={isSubscribeModalOpen} onClose={() => setIsSubscribeModalOpen(false)} />
     </header>
   );
 };

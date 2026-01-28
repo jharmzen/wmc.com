@@ -2,41 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const WMCFooter: React.FC = () => {
-  const eventLinks = [
-    { label: 'All Events', href: '/events' },
-    { label: 'Half-Day Seminars', href: '/events' },
-    { label: 'Webinars', href: '/webinars' },
-    { label: 'Interactive Zoom Sessions', href: '/events' },
+  const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about-us' },
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'Membership', href: '/membership' },
+    { label: 'Events', href: '/events' },
+    { label: 'Testimonials', href: '/testimonials' },
   ];
 
-  const companyLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about-us' },
-    { label: 'Testimonials', href: '/testimonials' },
-    { label: 'FAQ', href: '/faq' },
-    { label: 'Contact', href: '/contact-us' },
+  const resources = [
+    { label: 'Shop', href: '/shop' },
+    { label: 'Blog/Insights', href: '/blog' },
+    { label: 'Contact Us', href: '/contact-us' },
+    { label: 'Member Login', href: '/login' },
   ];
 
   const socialLinks = [
     { icon: 'fa-facebook-f', href: 'https://www.facebook.com/wealthmastersclub', label: 'Facebook' },
     { icon: 'fa-linkedin-in', href: 'https://www.linkedin.com/company/wealth-masters-club', label: 'LinkedIn' },
     { icon: 'fa-youtube', href: 'https://www.youtube.com/@WealthMastersClub', label: 'YouTube' },
+    { icon: 'fa-instagram', href: 'https://www.instagram.com/wealthmastersclub', label: 'Instagram' },
   ];
 
   return (
     <footer id="global-footer" className="code-section bg-[#0d203b] text-white">
       <div className="px-4 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Logo & Description */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="block mb-4">
-              <img src="/assets/header.png" alt="Wealth Masters Club" className="h-20 w-auto" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Column 1: Brand & Description */}
+          <div className="space-y-6">
+            <Link to="/" className="inline-block">
+              <img src="/assets/header.png" alt="Wealth Masters Club" className="h-20" />
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Professional wealth and property education since 1996.
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Your trusted partner on the journey towards financial freedom through
+              specialized trust structures and property investments.
             </p>
-            <div className="flex gap-4">
+            <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
@@ -52,13 +54,13 @@ const WMCFooter: React.FC = () => {
             </div>
           </div>
 
-          {/* Events Links */}
+          {/* Column 2: Quick Links */}
           <div>
             <h3 className="font-[var(--font-family-heading)] text-lg font-bold mb-6 text-[#4782b5]">
-              Events
+              Quick Links
             </h3>
             <ul className="space-y-3">
-              {eventLinks.map((link, index) => (
+              {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
@@ -71,13 +73,13 @@ const WMCFooter: React.FC = () => {
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* Column 3: Resources */}
           <div>
             <h3 className="font-[var(--font-family-heading)] text-lg font-bold mb-6 text-[#4782b5]">
-              Company
+              Resources
             </h3>
             <ul className="space-y-3">
-              {companyLinks.map((link, index) => (
+              {resources.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
@@ -90,27 +92,33 @@ const WMCFooter: React.FC = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 4: Contact Info */}
           <div>
             <h3 className="font-[var(--font-family-heading)] text-lg font-bold mb-6 text-[#4782b5]">
               Contact Us
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <i className="fas fa-envelope text-[#4782b5] mt-1" aria-hidden="true"></i>
-                <a href="mailto:info@wealthmastersclub.com" className="text-gray-300 hover:text-[#4782b5] text-sm transition-colors duration-200">
-                  info@wealthmastersclub.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start space-x-3">
                 <i className="fas fa-phone text-[#4782b5] mt-1" aria-hidden="true"></i>
-                <a href="tel:+27218512730" className="text-gray-300 hover:text-[#4782b5] text-sm transition-colors duration-200">
-                  +27 21 851 2730
-                </a>
+                <div>
+                  <p className="text-gray-300">+27 21 851 2730</p>
+                </div>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start space-x-3">
+                <i className="fas fa-envelope text-[#4782b5] mt-1" aria-hidden="true"></i>
+                <div>
+                  <p className="text-gray-300">info@wealthmastersclub.com</p>
+                </div>
+              </li>
+              <li className="flex items-start space-x-3">
                 <i className="fas fa-map-marker-alt text-[#4782b5] mt-1" aria-hidden="true"></i>
-                <span className="text-gray-300 text-sm">South Africa</span>
+                <div>
+                  <p className="text-gray-300">
+                    Posbus 834, Somerset Mall<br />
+                    Somerset West, 7137<br />
+                    South Africa
+                  </p>
+                </div>
               </li>
             </ul>
           </div>
@@ -118,21 +126,24 @@ const WMCFooter: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white border-opacity-20 pt-8">
-          <div className="text-center mb-6">
-            <p className="text-xs text-gray-400">
-              Part of Destinata Group of Companies - Legal, Financial &amp; Property Service Provider
-            </p>
-            <p className="text-xs text-gray-400">
-              Authorised FSP: 48729 | Fiduciary Institute of South Africa | Accounting Association of South Africa | Property Practitioners Regulatory Authority
-            </p>
-            <p className="text-xs text-gray-400 mt-2">
-              &copy; 2026 Wealth Masters Club. All rights reserved.
-            </p>
-          </div>
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+            {/* Credentials */}
+            <div className="text-center lg:text-left">
+              <p className="text-xs text-gray-400">
+                Part of Destinata Group of Companies - Legal, Financial & Property Service Provider
+              </p>
+              <p className="text-xs text-gray-400">
+                Authorised FSP: 48729 | Fiduciary Institute of South Africa | Accounting Association of South Africa | Property Practitioners Regulatory Authority
+              </p>
+            </div>
 
-          <p className="text-center text-xs text-gray-500 leading-relaxed">
-            All content is for educational purposes only. Wealth Masters Club does not guarantee specific financial returns or outcomes. Investment decisions should be made in consultation with licensed financial professionals.
-          </p>
+            {/* Copyright */}
+            <div className="text-center lg:text-right">
+              <p className="text-xs text-gray-400">
+                © 2025 Wealth Masters Club. All rights reserved.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
