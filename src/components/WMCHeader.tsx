@@ -34,7 +34,7 @@ const WMCHeader: React.FC = () => {
   const navItems = isAuthenticated ? memberNavItems : publicNavItems;
 
   return (
-    <header id="global-header" className="code-section bg-[#0A1E3D] border-b border-[#1E3A5F] sticky top-0 z-50">
+    <header id="global-header" className="code-section bg-[#0d203b] shadow-md sticky top-0 z-50">
       <div className="px-4 md:px-8 lg:px-16">
         <div className="flex items-center justify-between h-16 sm:h-20 lg:h-28">
           {/* Logo */}
@@ -43,12 +43,12 @@ const WMCHeader: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.href}
-                className="text-white hover:text-[#DAA520] transition-colors duration-300 text-base"
+                className="text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -57,7 +57,7 @@ const WMCHeader: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsMemberDropdownOpen(!isMemberDropdownOpen)}
-                  className="flex items-center space-x-2 text-white hover:text-[#DAA520] transition-colors duration-200"
+                  className="flex items-center space-x-2 text-white hover:text-[#ad7d13] transition-colors duration-200"
                 >
                   <img
                     src="https://backoffice.treoc.com/data/archive/images/portal-profile.png"
@@ -125,27 +125,27 @@ const WMCHeader: React.FC = () => {
                 )}
               </div>
             ) : (
-              <button onClick={() => setIsLoginModalOpen(true)} className="text-white hover:text-[#DAA520] transition-colors duration-300 text-base">
+              <button onClick={() => setIsLoginModalOpen(true)} className="bg-[#4782b5] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#3a6b8c] transition-all duration-200">
                 Login
               </button>
             )}
-            <button onClick={() => setIsSubscribeModalOpen(true)} className="bg-[#DAA520] text-white px-6 py-3 rounded-[10px] hover:bg-[#C29318] transition-all duration-300 font-[var(--font-family-body)] font-semibold">
+            <button onClick={() => setIsSubscribeModalOpen(true)} className="bg-[#ad7d13] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#8d6610] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
               Join the Club Now
             </button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden text-white hover:text-[#DAA520] transition-colors p-2" aria-label="Toggle mobile menu">
-            <i className="fas fa-bars text-2xl" aria-hidden="true"></i>
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden text-white p-3 rounded-md hover:bg-[#4782b5] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#ad7d13] focus:ring-offset-2 focus:ring-offset-[#0d203b]" aria-label="Toggle mobile menu">
+            <i className="fas fa-bars text-xl sm:text-2xl" aria-hidden="true"></i>
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="lg:hidden pb-4 pt-2">
+          <nav className="lg:hidden pb-4 px-4 bg-[#0d203b]">
             <div className="flex flex-col space-y-3">
               {navItems.map((item, index) => (
-                <Link key={index} to={item.href} onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#DAA520] transition-colors duration-300 text-base py-2">
+                <Link key={index} to={item.href} onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-[#ad7d13] text-sm font-medium transition-colors duration-200 py-2 border-b border-[#4782b5]">
                   {item.label}
                 </Link>
               ))}
@@ -186,11 +186,11 @@ const WMCHeader: React.FC = () => {
                   </button>
                 </>
               ) : (
-                <button onClick={() => { setIsMobileMenuOpen(false); setIsLoginModalOpen(true); }} className="text-white hover:text-[#DAA520] transition-colors duration-300 text-base py-2 text-left">
+                <button onClick={() => { setIsMobileMenuOpen(false); setIsLoginModalOpen(true); }} className="bg-[#4782b5] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#3a6b8c] transition-all duration-200 text-center">
                   Login
                 </button>
               )}
-              <button onClick={() => { setIsMobileMenuOpen(false); setIsSubscribeModalOpen(true); }} className="bg-[#DAA520] text-white px-6 py-3 rounded-[10px] hover:bg-[#C29318] transition-all duration-300 font-[var(--font-family-body)] font-semibold text-center">
+              <button onClick={() => { setIsMobileMenuOpen(false); setIsSubscribeModalOpen(true); }} className="bg-[#ad7d13] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#8d6610] transition-all duration-200 text-center">
                 Join the Club Now
               </button>
             </div>

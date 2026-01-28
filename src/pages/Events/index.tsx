@@ -23,135 +23,151 @@ const Events: React.FC = () => {
               Join us at one of our professional in-person seminars across South Africa. Half-day sessions focused on structured property investment principles, trust awareness, and long-term planning.
             </p>
           </div>
-          <div className="max-w-5xl mx-auto">
-            <img
-              src="https://backoffice.treoc.com/data/archive/documents/images/697351ee632af.png"
-              alt="Wealth Masters Club Events"
-              className="w-full rounded-xl shadow-2xl object-cover max-h-[400px]"
-            />
-          </div>
         </div>
       </section>
 
-      {/* Event Cards Section */}
+      {/* Event Formats Section */}
       <section className="py-16 sm:py-24 bg-white">
-        <div className="px-4">
+        <div className="max-w-5xl mx-auto">
+          <img
+            src="https://backoffice.treoc.com/data/archive/documents/images/697351ee632af.png"
+            alt="Wealth Masters Club Events"
+            className="w-full rounded-xl shadow-2xl object-cover max-h-[400px]"
+          />
+        </div>
+
+        <div className="px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="font-[var(--font-family-heading)] text-3xl sm:text-4xl font-bold text-[#0A1E3D] mb-4">
-              Upcoming Half-Day Seminars
-            </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Professional in-person seminars designed for long-term wealth builders
+            <h1 className="text-4xl font-bold text-[#0d203b] mb-4">
+              Professional Financial &amp; Property Education for Long-Term Wealth Builders
+            </h1>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Half-Day Seminars */}
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#4782b5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i className="fas fa-users text-[#4782b5] text-2xl" aria-hidden="true"></i>
+                </div>
+                <span className="inline-block bg-[#ad7d13]/10 text-[#ad7d13] text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                  In Person
+                </span>
+                <h3 className="text-2xl font-bold text-[#0d203b]">Half-Day Seminars</h3>
+              </div>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                City-based educational seminars held in Johannesburg, Cape Town, and Durban. Focused on structured property investment principles, trust awareness, and long-term planning.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">In-person classroom learning</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Real-world examples</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Networking with like-minded attendees</span>
+                </li>
+              </ul>
+              <Link
+                to="/events"
+                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#4782b5] text-white hover:bg-[#3a6b8c]"
+              >
+                View Seminars
+              </Link>
+            </div>
+
+            {/* Live Webinars */}
+            <div className="bg-white rounded-lg shadow-lg p-6 relative border-2 border-[#ad7d13] transform scale-105 flex flex-col">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-[#ad7d13] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  Most Popular
+                </span>
+              </div>
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#4782b5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i className="fas fa-video text-[#4782b5] text-2xl" aria-hidden="true"></i>
+                </div>
+                <span className="inline-block bg-[#ad7d13]/10 text-[#ad7d13] text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                  Online
+                </span>
+                <h3 className="text-2xl font-bold text-[#0d203b]">Live Webinars</h3>
+              </div>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Educational online sessions introducing key concepts and providing clarity around wealth structuring and property investment fundamentals.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Attend from anywhere</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Structured presentations</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Suitable for beginners and refreshers</span>
+                </li>
+              </ul>
+              <Link
+                to="/webinars"
+                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#ad7d13] text-white hover:bg-[#8d6610]"
+              >
+                Register for Webinar
+              </Link>
+            </div>
+
+            {/* Zoom Sessions */}
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#4782b5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i className="fas fa-comments text-[#4782b5] text-2xl" aria-hidden="true"></i>
+                </div>
+                <span className="inline-block bg-[#ad7d13]/10 text-[#ad7d13] text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                  Interactive Online
+                </span>
+                <h3 className="text-2xl font-bold text-[#0d203b]">Zoom Sessions</h3>
+              </div>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Smaller, interactive online sessions with live discussion and Q&amp;A, allowing deeper engagement.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Live Q&amp;A</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Interactive discussions</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Concept clarification</span>
+                </li>
+              </ul>
+              <Link
+                to="/events"
+                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#4782b5] text-white hover:bg-[#3a6b8c]"
+              >
+                See Upcoming Sessions
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-4">
+              Have questions about our events? We're here to help.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {/* Johannesburg */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-              <div className="bg-[#DAA520] p-6 text-center">
-                <div className="inline-block bg-[#C29318] rounded-lg px-4 py-2 mb-3">
-                  <p className="text-white font-semibold text-sm">21 FEBRUARY 2026</p>
-                </div>
-                <h3 className="text-2xl font-[var(--font-family-heading)] font-bold text-white">GAUTENG</h3>
-              </div>
-              <div className="p-6">
-                <h4 className="text-xl font-[var(--font-family-heading)] font-bold text-[#1A1A1A] mb-4">Wealth &amp; Property Investment Masterclass</h4>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-map-marker-alt text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Johannesburg</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-clock text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Half-day session</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-graduation-cap text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Educational focus</span>
-                  </div>
-                </div>
-                <Link to="https://www.quicket.co.za/events/355514-wealth-property-investment-masterclass-2102/#/" className="block text-center bg-[#DAA520] text-white px-6 py-3 rounded-[10px] hover:bg-[#C29318] transition-all duration-300 font-[var(--font-family-body)] font-semibold shadow-md hover:shadow-lg" target='_blank'>
-                  Book Your Seat
-                </Link>
-              </div>
-            </div>
-
-            {/* Durban */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-              <div className="bg-[#DAA520] p-6 text-center">
-                <div className="inline-block bg-[#C29318] rounded-lg px-4 py-2 mb-3">
-                  <p className="text-white font-semibold text-sm">14 MARCH 2026</p>
-                </div>
-                <h3 className="text-2xl font-[var(--font-family-heading)] font-bold text-white">DURBAN</h3>
-              </div>
-              <div className="p-6">
-                <h4 className="text-xl font-[var(--font-family-heading)] font-bold text-[#1A1A1A] mb-4">Wealth &amp; Property Investment Masterclass</h4>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-map-marker-alt text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Durban</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-clock text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Half-day session</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-graduation-cap text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Educational focus</span>
-                  </div>
-                </div>
-                <Link to="/contact-us" className="block text-center bg-[#DAA520] text-white px-6 py-3 rounded-[10px] hover:bg-[#C29318] transition-all duration-300 font-[var(--font-family-body)] font-semibold shadow-md hover:shadow-lg">
-                  Book Your Seat
-                </Link>
-              </div>
-            </div>
-
-            {/* Cape Town */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-              <div className="bg-[#DAA520] p-6 text-center">
-                <div className="inline-block bg-[#C29318] rounded-lg px-4 py-2 mb-3">
-                  <p className="text-white font-semibold text-sm">11 APRIL 2026</p>
-                </div>
-                <h3 className="text-2xl font-[var(--font-family-heading)] font-bold text-white">CAPE TOWN</h3>
-              </div>
-              <div className="p-6">
-                <h4 className="text-xl font-[var(--font-family-heading)] font-bold text-[#1A1A1A] mb-4">Wealth &amp; Property Investment Masterclass</h4>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-map-marker-alt text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Cape Town</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-clock text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Half-day session</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <i className="fas fa-graduation-cap text-[#DAA520] mt-1 text-sm" aria-hidden="true"></i>
-                    <span className="text-gray-500 text-sm">Educational focus</span>
-                  </div>
-                </div>
-                <Link to="/contact-us" className="block text-center bg-[#DAA520] text-white px-6 py-3 rounded-[10px] hover:bg-[#C29318] transition-all duration-300 font-[var(--font-family-body)] font-semibold shadow-md hover:shadow-lg">
-                  Book Your Seat
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Bonus Section */}
-          <div className="max-w-6xl mx-auto bg-white rounded-xl p-6 sm:p-8 text-center shadow-xl border border-gray-200">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <div className="w-16 h-16 bg-[#DAA520]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <i className="fas fa-gift text-[#DAA520] text-2xl" aria-hidden="true"></i>
-              </div>
-              <div className="text-center sm:text-left">
-                <h4 className="text-xl sm:text-2xl font-[var(--font-family-heading)] font-bold text-[#1A1A1A] mb-2">Limited Time Bonus</h4>
-                <p className="text-gray-500 text-base sm:text-lg">
-                  Register now and receive a{' '}
-                  <strong className="text-[#DAA520]">FREE digital copy of &quot;Rich Mind, Rich Man&quot;</strong>{' '}
-                  with your seminar registration
-                </p>
-              </div>
-            </div>
+            <Link
+              to="/contact-us"
+              className="bg-[#0d203b] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#1a2a3a] transition-colors"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

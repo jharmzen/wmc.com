@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/Landing';
@@ -30,10 +31,19 @@ import WebinarDetail from './pages/WebinarDetail';
 import ServiceRating from './pages/ServiceRating';
 import ServiceReassign from './pages/ServiceReassign';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <div className="App">
           <Routes>
             {/* Public pages */}
