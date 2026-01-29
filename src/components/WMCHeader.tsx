@@ -41,7 +41,7 @@ const WMCHeader: React.FC = () => {
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
-            <img src="/assets/header.png" alt="Wealth Masters Club" className="h-28 py-2" />
+            <img src="/assets/img/logo-white.png" alt="Wealth Masters Club" className="h-28 py-2" />
           </Link>
 
           {/* Desktop Navigation */}

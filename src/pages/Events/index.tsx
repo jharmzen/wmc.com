@@ -7,36 +7,10 @@ const Events: React.FC = () => {
     <div className="min-h-screen bg-white">
       <WMCHeader />
 
-      {/* Hero Section */}
-      <section className="bg-[#0A1E3D] py-16 sm:py-24">
-        <div className="px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-[#DAA520]/10 border border-[#DAA520] rounded-full px-6 py-2 mb-8 backdrop-blur-sm">
-              <i className="fas fa-calendar text-[#DAA520]" aria-hidden="true"></i>
-              <span className="text-white text-sm font-medium">Upcoming Events</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[var(--font-family-heading)] font-bold text-white mb-6 leading-tight">
-              Wealth &amp; Property Investment{' '}
-              <span className="text-[#DAA520]">Events</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Join us at one of our professional in-person seminars across South Africa. Half-day sessions focused on structured property investment principles, trust awareness, and long-term planning.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Event Formats Section */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <img
-            src="https://backoffice.treoc.com/data/archive/documents/images/697351ee632af.png"
-            alt="Wealth Masters Club Events"
-            className="w-full rounded-xl shadow-2xl object-cover max-h-[400px]"
-          />
-        </div>
+      <section className="py-8 sm:py-12 bg-white">
 
-        <div className="px-4 py-16">
+        <div className="px-4 py-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-[#0d203b] mb-4">
               Professional Financial &amp; Property Education for Long-Term Wealth Builders
@@ -44,49 +18,8 @@ const Events: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Half-Day Seminars */}
-            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-[#4782b5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-users text-[#4782b5] text-2xl" aria-hidden="true"></i>
-                </div>
-                <span className="inline-block bg-[#ad7d13]/10 text-[#ad7d13] text-xs font-semibold px-3 py-1 rounded-full mb-2">
-                  In Person
-                </span>
-                <h3 className="text-2xl font-bold text-[#0d203b]">Half-Day Seminars</h3>
-              </div>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                City-based educational seminars held in Johannesburg, Cape Town, and Durban. Focused on structured property investment principles, trust awareness, and long-term planning.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center">
-                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
-                  <span className="text-gray-700">In-person classroom learning</span>
-                </li>
-                <li className="flex items-center">
-                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
-                  <span className="text-gray-700">Real-world examples</span>
-                </li>
-                <li className="flex items-center">
-                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
-                  <span className="text-gray-700">Networking with like-minded attendees</span>
-                </li>
-              </ul>
-              <Link
-                to="/events"
-                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#4782b5] text-white hover:bg-[#3a6b8c]"
-              >
-                View Seminars
-              </Link>
-            </div>
-
             {/* Live Webinars */}
-            <div className="bg-white rounded-lg shadow-lg p-6 relative border-2 border-[#ad7d13] transform scale-105 flex flex-col">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-[#ad7d13] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                  Most Popular
-                </span>
-              </div>
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-[#4782b5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-video text-[#4782b5] text-2xl" aria-hidden="true"></i>
@@ -115,9 +48,50 @@ const Events: React.FC = () => {
               </ul>
               <Link
                 to="/webinars"
-                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#ad7d13] text-white hover:bg-[#8d6610]"
+                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#4782b5] text-white hover:bg-[#3a6b8c]"
               >
                 Register for Webinar
+              </Link>
+            </div>
+
+            {/* Half-Day Seminars */}
+            <div className="bg-white rounded-lg shadow-lg p-6 relative border-2 border-[#ad7d13] transform scale-105 flex flex-col">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-[#ad7d13] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  Most Popular
+                </span>
+              </div>
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#4782b5]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i className="fas fa-users text-[#4782b5] text-2xl" aria-hidden="true"></i>
+                </div>
+                <span className="inline-block bg-[#ad7d13]/10 text-[#ad7d13] text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                  In Person
+                </span>
+                <h3 className="text-2xl font-bold text-[#0d203b]">Half-Day Seminars</h3>
+              </div>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                City-based educational seminars held in Johannesburg, Cape Town, and Durban. Focused on structured property investment principles, trust awareness, and long-term planning.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">In-person classroom learning</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Real-world examples</span>
+                </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check text-green-500 mr-3" aria-hidden="true"></i>
+                  <span className="text-gray-700">Networking with like-minded attendees</span>
+                </li>
+              </ul>
+              <Link
+                to="/events"
+                className="mt-auto block w-full text-center py-3 px-4 rounded-lg font-semibold transition-colors bg-[#ad7d13] text-white hover:bg-[#8d6610]"
+              >
+                View Seminars
               </Link>
             </div>
 

@@ -32,7 +32,7 @@ const WMCFooter: React.FC = () => {
           {/* Column 1: Brand & Description */}
           <div className="space-y-6">
             <Link to="/" className="inline-block">
-              <img src="/assets/header.png" alt="Wealth Masters Club" className="h-20" />
+              <img src="/assets/img/logo-white.png" alt="Wealth Masters Club" className="h-20" />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               Your trusted partner on the journey towards financial freedom through
